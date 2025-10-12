@@ -1,6 +1,6 @@
 title: "Subhankar Nag"
 description: "PhD student in Deep Learning"
-theme: "mmistakes/minimal-mistakes"
+remote_theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-include-cache
 
