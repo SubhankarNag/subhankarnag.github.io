@@ -19,3 +19,20 @@ author:
     - label: "Google Scholar"
       icon: "ai ai-google-scholar"
       url: "https://scholar.google.com/..."
+
+
+# Sidebar settings
+author_profile: true
+minimal_mistakes_skin: "default"  # or "air", "contrast", "dark"
+
+
+# Navigation
+nav:
+  - title: "About"
+    url: /about/
+  - title: "Publications"
+    url: /publications/
+  - title: "Projects"
+    url: /projects/
+  - title: "CV"
+    url: /cv/
