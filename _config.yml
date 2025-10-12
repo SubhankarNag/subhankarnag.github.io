@@ -1,18 +1,18 @@
 title: "Subhankar Nag"
 description: "PhD student in Deep Learning"
-theme: minimal-mistakes-jekyll
+theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-include-cache
 
 author:
   name: "Subhankar Nag"
-  avatar: "/assets/images/profile.jpg" # optional
+  avatar: "/assets/images/iitb_dp_1.png" # optional
   bio: "PhD Student, Deep Learning"
   location: "India"
   links:
     - label: "Email"
       icon: "fas fa-envelope"
-      url: "mailto:yourname@email.com"
+      url: "mailto:snag081@email.com"
     - label: "GitHub"
       icon: "fab fa-github"
       url: "https://github.com/subhankarnag"
