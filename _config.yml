@@ -36,3 +36,8 @@ nav:
     url: /projects/
   - title: "CV"
     url: /cv/
+
+
+
+footer:
+  content: "<small>© 2025 Subhankar Nag — Powered by <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a> & <a href='https://mmistakes.github.io/minimal-mistakes/' target='_blank'>Minimal Mistakes</a>.</small>"

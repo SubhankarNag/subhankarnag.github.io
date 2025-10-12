@@ -1,0 +1,13 @@
+/* Disable image fade/hover effect in Minimal Mistakes */
+.page__content img {
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+a img {
+  opacity: 1 !important;
+}
+
+a:hover img {
+  opacity: 1 !important;
+}
