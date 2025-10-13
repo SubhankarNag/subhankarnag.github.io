@@ -1,4 +1,12 @@
-/* Disable image fade/hover effect in Minimal Mistakes */
+---
+# This front matter is REQUIRED so Jekyll will process this SCSS file.
+---
+
+/* Import the Minimal Mistakes theme styles first */
+@import "minimal-mistakes";
+
+/* --- Your overrides go AFTER the import --- */
+/* Disable image fade/hover effect */
 .page__content img {
   opacity: 1 !important;
   transition: none !important;
@@ -10,4 +18,10 @@ a img {
 
 a:hover img {
   opacity: 1 !important;
+}
+
+/* Make footer small and subtle (optional) */
+.site-footer {
+  font-size: 0.75rem;
+  opacity: 0.75;
 }
