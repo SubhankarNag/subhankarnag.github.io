@@ -1,0 +1,9 @@
+/* Override the 'intro' keyframe animation for the sidebars */
+@-webkit-keyframes intro { }
+@keyframes intro { }
+
+/* Optionally, remove the animation property from the sidebar elements if the override above isn't enough */
+.sidebar {
+  -webkit-animation: none !important;
+  animation: none !important;
+}
