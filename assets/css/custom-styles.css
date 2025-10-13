@@ -4,5 +4,7 @@
 
 /* Optionally, remove the animation property from the sidebar elements if the override above isn't enough */
 .sidebar {
-  opacity: 1 !important;
+  -webkit-animation: none !important;
+  animation: none !important;
+  opacity: 1;
 }
