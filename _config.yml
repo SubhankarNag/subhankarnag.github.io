@@ -4,6 +4,10 @@ remote_theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-include-cache
 
+sass:
+  sass_dir: _sass
+  style: compressed
+
 author:
   name: "Subhankar Nag"
   avatar: "/assets/images/iitb_dp_1.png" # optional
