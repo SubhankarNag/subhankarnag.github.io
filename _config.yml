@@ -4,9 +4,6 @@ remote_theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-include-cache
 
-# sass:
-#   sass_dir: _sass
-#   style: compressed
 
 author:
   name: "Subhankar Nag"
@@ -40,9 +37,3 @@ nav:
     url: /projects/
   - title: "CV"
     url: /cv/
-
-
-
-footer:
-  # feed: false
-  # content: "<small>© 2025 Subhankar Nag — Powered by <a href='https://jekyllrb.com/' target='_blank'>Jekyll</a> & <a href='https://mmistakes.github.io/minimal-mistakes/' target='_blank'>Minimal Mistakes</a>.</small>"
