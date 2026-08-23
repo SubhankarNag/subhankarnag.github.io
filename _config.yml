@@ -1,6 +1,7 @@
 title: "Subhankar Nag"
-description: "Ph.D. student in CSE at IIT Bombay | Deep Learning | Medical Image Computing"
+description: "Subhankar Nag — Ph.D. student in Computer Science & Engineering at IIT Bombay (IITB). Research in Deep Learning, Medical Image Computing, Generative Diffusion Models, and Privacy-Preserving Machine Learning."
 url: "https://subhankarnag.github.io"
+og_image: "/assets/images/iitb_dp_1.png"
 
 remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 
@@ -28,6 +29,8 @@ author:
     - label: "Google Scholar"
       icon : "ai ai-google-scholar-square"
       url  : "https://scholar.google.com/citations?user=cR80omQAAAAJ&hl=en"
+  # Used by SEO plugins and JSON-LD generation
+  github : "subhankarnag"
 
 # ────── Global defaults ──────
 defaults:

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap location for Google crawler
+Sitemap: https://subhankarnag.github.io/sitemap.xml
