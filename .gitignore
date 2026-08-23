@@ -1,0 +1,42 @@
+# ── Jekyll build output ──────────────────────────────
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# ── Ruby / Bundler ────────────────────────────────────
+vendor/
+.bundle/
+Gemfile.lock
+.ruby-version
+
+# ── OS generated files ───────────────────────────────
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ── Editor / IDE ──────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ── Logs & temp files ─────────────────────────────────
+*.log
+*.tmp

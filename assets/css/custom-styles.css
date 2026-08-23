@@ -1,29 +1,377 @@
-/* ── Disable the intro slide-in animation on the sidebar ── */
-@-webkit-keyframes intro { }
-@keyframes intro { }
+/* ================================================================
+   custom-styles.css — Subhankar Nag Academic Website
+   Light + Dark mode via CSS custom properties
+   ================================================================ */
 
+/* ── CSS Variables: Light Mode (default) ── */
+:root {
+  --bg:           #ffffff;
+  --bg-subtle:    #f5f5f5;
+  --bg-alt:       #fafafa;
+  --surface:      #ffffff;
+
+  --text:         #3d3d3d;
+  --text-muted:   #666666;
+  --heading:      #222222;
+  --heading-sub:  #444444;
+
+  --border:       #e8e8e8;
+  --border-strong:#d0d0d0;
+
+  --accent:       #494e52;
+  --accent-link:  #0077b6;
+
+  --masthead-bg:  #ffffff;
+  --masthead-shadow: rgba(0, 0, 0, 0.08);
+
+  --table-head-bg:#494e52;
+  --table-head-fg:#ffffff;
+  --table-alt:    #fafafa;
+  --table-border: #eeeeee;
+
+  --pill-bg:      #f5f5f5;
+
+  --toggle-bg-off:#cbd5e1;   /* light mode toggle track */
+  --toggle-bg-on: #3b82f6;   /* dark mode toggle track  */
+  --toggle-knob:  #ffffff;
+}
+
+/* ── CSS Variables: Dark Mode ── */
+[data-theme="dark"] {
+  --bg:           #0f1117;
+  --bg-subtle:    #1a1f2e;
+  --bg-alt:       #151a27;
+  --surface:      #0f1117;
+
+  --text:         #dde3ee;
+  --text-muted:   #8b97ad;
+  --heading:      #f0f4ff;
+  --heading-sub:  #c8d0e0;
+
+  --border:       #2a3142;
+  --border-strong:#3a4558;
+
+  --accent:       #5e81b5;
+  --accent-link:  #63b3ed;
+
+  --masthead-bg:  #13172199;   /* semi-transparent for glassmorphism */
+  --masthead-shadow: rgba(0, 0, 0, 0.35);
+
+  --table-head-bg:#1e2740;
+  --table-head-fg:#e2e8f0;
+  --table-alt:    #131825;
+  --table-border: #2a3142;
+
+  --pill-bg:      #1e2535;
+
+  --toggle-bg-off:#cbd5e1;
+  --toggle-bg-on: #3b82f6;
+  --toggle-knob:  #ffffff;
+}
+
+/* ── Global color transition — smooth theme switching ── */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.35s ease,
+    border-color     0.35s ease,
+    color            0.25s ease,
+    box-shadow       0.35s ease;
+}
+
+/* ── 1. Smooth scrolling ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── 2. Page background ── */
+body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* ── 3. Sticky masthead with glassmorphism in dark mode ── */
+.masthead {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0;
+  z-index: 20;
+  background-color: var(--masthead-bg) !important;
+  box-shadow: 0 1px 8px var(--masthead-shadow);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+}
+
+/* Masthead nav links */
+.masthead a,
+.masthead__inner-wrap a,
+.greedy-nav a {
+  color: var(--heading) !important;
+}
+
+.greedy-nav a:hover {
+  color: var(--accent-link) !important;
+}
+
+/* ── 4. Sidebar ── */
 .sidebar {
   -webkit-animation: none !important;
   animation: none !important;
   opacity: 1 !important;
+  background-color: var(--bg) !important;
 }
 
-/* ── Publication entry styling ── */
-.publication-entry {
-  margin-bottom: 1.5em;
+.author__name,
+.author__bio,
+.author__location {
+  color: var(--heading) !important;
 }
 
-/* ── Section anchors: offset for fixed masthead ── */
+.author__urls a {
+  color: var(--text) !important;
+  transition: color 0.15s ease !important;
+}
+
+.author__urls a:hover {
+  color: var(--accent-link) !important;
+}
+
+/* ── 5. Main content area ── */
+.page__content,
+.page__inner-wrap,
+#main,
+.initial-content {
+  background-color: var(--bg) !important;
+}
+
+/* ── 6. Section anchor scroll offset ── */
 h2[id],
 h3[id] {
   scroll-margin-top: 80px;
 }
 
-/* ── Make tables look cleaner ── */
-table {
-  font-size: 0.9em;
+/* ── 7. Section headings ── */
+.page__content h2 {
+  font-size: 1.35em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--heading) !important;
+  border-left: 4px solid var(--accent);
+  padding-left: 0.6em;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
 }
 
-td, th {
-  padding: 0.4em 0.8em !important;
+.page__content h3 {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--heading-sub) !important;
+  margin-top: 1.4em;
+  margin-bottom: 0.3em;
+}
+
+/* ── 8. Horizontal rules ── */
+.page__content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+/* ── 9. Project headings — pill labels ── */
+#projects ~ * h3 {
+  background: var(--pill-bg);
+  border-left: 3px solid var(--accent);
+  padding: 0.35em 0.7em;
+  border-radius: 0 4px 4px 0;
+  font-size: 1em;
+  color: var(--heading) !important;
+  margin-top: 1.5em;
+}
+
+/* ── 10. Tables ── */
+.page__content table {
+  font-size: 0.875em;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.page__content th {
+  background-color: var(--table-head-bg) !important;
+  color: var(--table-head-fg) !important;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.55em 0.9em !important;
+  letter-spacing: 0.03em;
+}
+
+.page__content td {
+  padding: 0.45em 0.9em !important;
+  border-bottom: 1px solid var(--table-border) !important;
+  vertical-align: top;
+  color: var(--text) !important;
+  background-color: var(--bg) !important;
+}
+
+.page__content tr:last-child td {
+  border-bottom: none !important;
+}
+
+.page__content tr:nth-child(even) td {
+  background-color: var(--table-alt) !important;
+}
+
+/* ── 11. Links ── */
+.page__content a {
+  color: var(--accent-link) !important;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.15s ease,
+    color        0.15s ease !important;
+}
+
+.page__content a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* ── 12. Body text ── */
+.page__content p,
+.page__content li {
+  line-height: 1.8;
+  color: var(--text) !important;
+}
+
+.page__content > p:first-of-type {
+  font-size: 1.04em;
+}
+
+/* ── 13. Footer ── */
+.page__footer {
+  background-color: var(--bg-subtle) !important;
+  color: var(--text-muted) !important;
+  border-top: 1px solid var(--border);
+}
+
+.page__footer a {
+  color: var(--text-muted) !important;
+}
+
+/* ── 14. Greedy nav hidden links panel (mobile) ── */
+.greedy-nav__toggle {
+  color: var(--heading) !important;
+}
+
+.hidden-links {
+  background: var(--masthead-bg) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.hidden-links li a {
+  color: var(--heading) !important;
+}
+
+/* ================================================================
+   DARK MODE TOGGLE BUTTON
+   ================================================================ */
+
+#dm-toggle {
+  /* Position: injected by JS into the masthead nav area */
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             7px;
+  margin-left:     16px;
+  background:      none;
+  border:          none;
+  cursor:          pointer;
+  padding:         0;
+  flex-shrink:     0;
+  outline:         none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Track (pill shape) */
+#dm-toggle .dm-track {
+  position:      relative;
+  width:         46px;
+  height:        24px;
+  border-radius: 999px;
+  background:    var(--toggle-bg-off);
+  transition:    background 0.4s ease;
+  flex-shrink:   0;
+}
+
+[data-theme="dark"] #dm-toggle .dm-track {
+  background: var(--toggle-bg-on);
+}
+
+/* Knob */
+#dm-toggle .dm-knob {
+  position:      absolute;
+  top:           3px;
+  left:          3px;
+  width:         18px;
+  height:        18px;
+  border-radius: 50%;
+  background:    var(--toggle-knob);
+  box-shadow:    0 1px 4px rgba(0,0,0,0.25);
+  transition:    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+  overflow:      hidden;
+}
+
+[data-theme="dark"] #dm-toggle .dm-knob {
+  transform: translateX(22px);
+}
+
+/* Sun icon */
+#dm-toggle .dm-icon-sun {
+  position:   absolute;
+  font-size:  11px;
+  opacity:    1;
+  transform:  rotate(0deg) scale(1);
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  line-height: 1;
+}
+
+/* Moon icon */
+#dm-toggle .dm-icon-moon {
+  position:   absolute;
+  font-size:  11px;
+  opacity:    0;
+  transform:  rotate(-90deg) scale(0.5);
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  line-height: 1;
+}
+
+[data-theme="dark"] #dm-toggle .dm-icon-sun {
+  opacity:   0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="dark"] #dm-toggle .dm-icon-moon {
+  opacity:   1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Label text next to the toggle */
+#dm-toggle .dm-label {
+  font-size:   0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color:       var(--text-muted);
+  transition:  color 0.3s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Hover: glow effect on track */
+#dm-toggle:hover .dm-track {
+  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.25);
 }

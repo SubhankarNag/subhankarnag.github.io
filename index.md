@@ -14,10 +14,10 @@ My work spans generative diffusion models for medical image synthesis, neural im
 ## Research Interests
 {: #research}
 
-- 🧬 Generative models for medical image synthesis
-- 🏥 Medical image computing (MRI, segmentation)
-- 🗜️ Neural image compression
-- 🔒 Privacy-preserving machine learning (federated learning, gradient inversion)
+- Generative models for medical image synthesis
+- Medical image computing (MRI, segmentation)
+- Neural image compression
+- Privacy-preserving machine learning (federated learning, gradient inversion)
 
 ---
 
@@ -96,4 +96,4 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 ### Achievements
 
-- 🏆 **GATE CS 2024** — All India Rank **236** (out of 123,967 candidates)
+- **GATE CS 2024** — All India Rank **236** (out of 123,967 candidates)
