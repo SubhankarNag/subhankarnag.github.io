@@ -324,35 +324,59 @@ nav.greedy-nav {
     border: 1px solid var(--border) !important;
     border-radius: 8px !important;
     box-sizing: border-box !important;
+    text-align: center !important;
   }
 
   .author__avatar {
-    display: inline-block !important;
+    display: block !important;
+    float: none !important;
     width: auto !important;
-    margin-bottom: 0.5em !important;
+    margin: 0 auto 0.5em auto !important;
   }
 
   .author__avatar img {
-    max-width: 100px !important;
+    max-width: 110px !important;
     border-radius: 50% !important;
   }
 
   .author__content {
     display: block !important;
+    float: none !important;
   }
 
   .author__urls-wrapper {
     display: block !important;
-    margin-top: 0.8em !important;
+    margin-top: 1em !important;
+  }
+
+  /* Hide the "Follow" button because links will always be visible on mobile */
+  .author__urls-wrapper button,
+  .author__urls-wrapper .btn {
+    display: none !important;
   }
 
   .author__urls {
     display: flex !important;
     flex-wrap: wrap !important;
+    justify-content: center !important;
     gap: 0.5em 1.2em !important;
     padding: 0 !important;
     margin: 0 !important;
     list-style: none !important;
+    
+    /* Override Minimal Mistakes dropdown styles */
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  .author__urls:before,
+  .author__urls:after {
+    display: none !important;
   }
 
   .author__urls li {
