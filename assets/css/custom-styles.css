@@ -406,6 +406,38 @@ nav.greedy-nav {
   margin-right: 0.4em !important;
 }
 
+/* ── Custom colored icons for Author Profile ── */
+.author__location i,
+.author__location .fa-map-marker-alt,
+.author__location .svg-inline--fa {
+  color: #ef4444 !important; /* Red */
+}
+
+.author__urls .fa-envelope {
+  color: #ea4335 !important; /* Red/Orange */
+}
+
+.author__urls .fa-globe {
+  color: #0ea5e9 !important; /* Sky Blue */
+}
+
+.author__urls .ai-google-scholar {
+  color: #4285F4 !important; /* Google Blue */
+}
+
+/* Brighten icons in Dark Mode for better contrast */
+[data-theme="dark"] .author__urls .fa-envelope {
+  color: #fca5a5 !important; 
+}
+
+[data-theme="dark"] .author__urls .fa-globe {
+  color: #7dd3fc !important;
+}
+
+[data-theme="dark"] .author__urls .ai-google-scholar {
+  color: #8ab4f8 !important;
+}
+
 /* ── 5. Main Content Area ── */
 .page__content,
 .page__inner-wrap,
