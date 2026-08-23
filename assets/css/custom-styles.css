@@ -5,74 +5,83 @@
 
 /* ── CSS Variables: Light Mode (default) ── */
 :root {
-  --bg:           #ffffff;
-  --bg-subtle:    #f5f5f5;
-  --bg-alt:       #fafafa;
-  --surface:      #ffffff;
+  --bg:              #ffffff;
+  --bg-subtle:       #f5f5f5;
+  --bg-alt:          #fafafa;
 
-  --text:         #3d3d3d;
-  --text-muted:   #666666;
-  --heading:      #222222;
-  --heading-sub:  #444444;
+  --text:            #3d3d3d;
+  --text-muted:      #666666;
+  --heading:         #222222;
+  --heading-sub:     #444444;
 
-  --border:       #e8e8e8;
-  --border-strong:#d0d0d0;
+  --border:          #e8e8e8;
 
-  --accent:       #494e52;
-  --accent-link:  #0077b6;
+  --accent:          #494e52;
+  --accent-link:     #0077b6;
 
-  --masthead-bg:  #ffffff;
+  /* BUG 1 FIX: Use rgba() not 8-digit hex — valid in all browsers */
+  --masthead-bg:     rgba(255, 255, 255, 1);
+  --masthead-text:   #222222;
   --masthead-shadow: rgba(0, 0, 0, 0.08);
 
-  --table-head-bg:#494e52;
-  --table-head-fg:#ffffff;
-  --table-alt:    #fafafa;
-  --table-border: #eeeeee;
+  --table-head-bg:   #494e52;
+  --table-head-fg:   #ffffff;
+  --table-alt:       #fafafa;
+  --table-border:    #eeeeee;
 
-  --pill-bg:      #f5f5f5;
+  --pill-bg:         #f0f2f4;
 
-  --toggle-bg-off:#cbd5e1;   /* light mode toggle track */
-  --toggle-bg-on: #3b82f6;   /* dark mode toggle track  */
-  --toggle-knob:  #ffffff;
+  --toggle-track-off:#cbd5e1;
+  --toggle-track-on: #3b82f6;
+  --toggle-knob:     #ffffff;
 }
 
 /* ── CSS Variables: Dark Mode ── */
 [data-theme="dark"] {
-  --bg:           #0f1117;
-  --bg-subtle:    #1a1f2e;
-  --bg-alt:       #151a27;
-  --surface:      #0f1117;
+  --bg:              #0f1117;
+  --bg-subtle:       #1a1f2e;
+  --bg-alt:          #151a27;
 
-  --text:         #dde3ee;
-  --text-muted:   #8b97ad;
-  --heading:      #f0f4ff;
-  --heading-sub:  #c8d0e0;
+  --text:            #dde3ee;
+  --text-muted:      #8b97ad;
+  --heading:         #f0f4ff;
+  --heading-sub:     #c8d0e0;
 
-  --border:       #2a3142;
-  --border-strong:#3a4558;
+  --border:          #2a3142;
 
-  --accent:       #5e81b5;
-  --accent-link:  #63b3ed;
+  --accent:          #5e81b5;
+  --accent-link:     #63b3ed;
 
-  --masthead-bg:  #13172199;   /* semi-transparent for glassmorphism */
-  --masthead-shadow: rgba(0, 0, 0, 0.35);
+  /* BUG 1 FIX: solid dark bg; glassmorphism via backdrop-filter on .masthead */
+  --masthead-bg:     rgba(15, 18, 28, 0.88);
+  --masthead-text:   #f0f4ff;
+  --masthead-shadow: rgba(0, 0, 0, 0.40);
 
-  --table-head-bg:#1e2740;
-  --table-head-fg:#e2e8f0;
-  --table-alt:    #131825;
-  --table-border: #2a3142;
+  --table-head-bg:   #1e2740;
+  --table-head-fg:   #e2e8f0;
+  --table-alt:       #131825;
+  --table-border:    #2a3142;
 
-  --pill-bg:      #1e2535;
+  --pill-bg:         #1e2535;
 
-  --toggle-bg-off:#cbd5e1;
-  --toggle-bg-on: #3b82f6;
-  --toggle-knob:  #ffffff;
+  --toggle-track-off:#cbd5e1;
+  --toggle-track-on: #3b82f6;
+  --toggle-knob:     #ffffff;
 }
 
-/* ── Global color transition — smooth theme switching ── */
-*,
-*::before,
-*::after {
+/* ── BUG 3 FIX: Scope transitions to specific properties, NOT * ── */
+/* Only animate colour-related changes to avoid sluggish interactions */
+body,
+.masthead,
+.sidebar,
+.page__content,
+.page__footer,
+.page__inner-wrap,
+#main,
+.initial-content,
+.author__name,
+.author__bio,
+.author__location {
   transition:
     background-color 0.35s ease,
     border-color     0.35s ease,
@@ -91,7 +100,7 @@ body {
   color: var(--text) !important;
 }
 
-/* ── 3. Sticky masthead with glassmorphism in dark mode ── */
+/* ── 3. Sticky masthead — glassmorphism in dark mode ── */
 .masthead {
   position: -webkit-sticky !important;
   position: sticky !important;
@@ -103,14 +112,20 @@ body {
           backdrop-filter: blur(12px);
 }
 
-/* Masthead nav links */
+/* BUG 2 FIX: Cover ALL masthead text elements explicitly */
 .masthead a,
 .masthead__inner-wrap a,
-.greedy-nav a {
-  color: var(--heading) !important;
+.greedy-nav a,
+.masthead__title,
+.masthead__title a,
+.site-title,
+.site-title a,
+.site-subtitle {
+  color: var(--masthead-text) !important;
 }
 
-.greedy-nav a:hover {
+.greedy-nav a:hover,
+.masthead a:hover {
   color: var(--accent-link) !important;
 }
 
@@ -130,7 +145,7 @@ body {
 
 .author__urls a {
   color: var(--text) !important;
-  transition: color 0.15s ease !important;
+  transition: color 0.2s ease !important;
 }
 
 .author__urls a:hover {
@@ -179,15 +194,18 @@ h3[id] {
   margin: 2em 0;
 }
 
-/* ── 9. Project headings — pill labels ── */
-#projects ~ * h3 {
-  background: var(--pill-bg);
-  border-left: 3px solid var(--accent);
-  padding: 0.35em 0.7em;
+/* ── 9. Project headings — pill labels
+        BUG 4 FIX: was "#projects ~ * h3" (wrong: h3 are DIRECT siblings)
+        Correct approach: target h3 inside .page__content after the Projects h2
+        Since we can't know DOM position in CSS alone, use a class added by JS    ── */
+.project-heading {
+  background:    var(--pill-bg);
+  border-left:   3px solid var(--accent);
+  padding:       0.35em 0.7em;
   border-radius: 0 4px 4px 0;
-  font-size: 1em;
-  color: var(--heading) !important;
-  margin-top: 1.5em;
+  font-size:     1em;
+  color:         var(--heading) !important;
+  margin-top:    1.5em;
 }
 
 /* ── 10. Tables ── */
@@ -196,6 +214,14 @@ h3[id] {
   width: 100%;
   border-collapse: collapse;
   margin: 1em 0;
+}
+
+/* Prevent short columns (Years, CGPA) from ever wrapping */
+.page__content td:nth-child(3),
+.page__content td:nth-child(4),
+.page__content th:nth-child(3),
+.page__content th:nth-child(4) {
+  white-space: nowrap;
 }
 
 .page__content th {
@@ -220,7 +246,7 @@ h3[id] {
 }
 
 .page__content tr:nth-child(even) td {
-  background-color: var(--table-alt) !important;
+  background-color: var(--bg-alt) !important;
 }
 
 /* ── 11. Links ── */
@@ -259,13 +285,14 @@ h3[id] {
   color: var(--text-muted) !important;
 }
 
-/* ── 14. Greedy nav hidden links panel (mobile) ── */
+/* ── 14. Greedy nav mobile dropdown
+        BUG 6 FIX: use --bg-subtle (solid) not --masthead-bg (semi-transparent)   ── */
 .greedy-nav__toggle {
-  color: var(--heading) !important;
+  color: var(--masthead-text) !important;
 }
 
 .hidden-links {
-  background: var(--masthead-bg) !important;
+  background: var(--bg-subtle) !important;
   border: 1px solid var(--border) !important;
 }
 
@@ -278,58 +305,56 @@ h3[id] {
    ================================================================ */
 
 #dm-toggle {
-  /* Position: injected by JS into the masthead nav area */
   display:         flex;
   align-items:     center;
   justify-content: center;
-  gap:             7px;
-  margin-left:     16px;
+  margin-left:     14px;
   background:      none;
   border:          none;
   cursor:          pointer;
-  padding:         0;
+  padding:         4px 0;
   flex-shrink:     0;
   outline:         none;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Track (pill shape) */
+/* Track (pill) */
 #dm-toggle .dm-track {
   position:      relative;
   width:         46px;
   height:        24px;
   border-radius: 999px;
-  background:    var(--toggle-bg-off);
-  transition:    background 0.4s ease;
+  background:    var(--toggle-track-off);
   flex-shrink:   0;
+  transition:    background 0.4s ease, box-shadow 0.2s ease;
 }
 
 [data-theme="dark"] #dm-toggle .dm-track {
-  background: var(--toggle-bg-on);
+  background: var(--toggle-track-on);
 }
 
 /* Knob */
 #dm-toggle .dm-knob {
-  position:      absolute;
-  top:           3px;
-  left:          3px;
-  width:         18px;
-  height:        18px;
-  border-radius: 50%;
-  background:    var(--toggle-knob);
-  box-shadow:    0 1px 4px rgba(0,0,0,0.25);
-  transition:    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display:       flex;
-  align-items:   center;
+  position:        absolute;
+  top:             3px;
+  left:            3px;
+  width:           18px;
+  height:          18px;
+  border-radius:   50%;
+  background:      var(--toggle-knob);
+  box-shadow:      0 1px 4px rgba(0, 0, 0, 0.3);
+  transition:      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display:         flex;
+  align-items:     center;
   justify-content: center;
-  overflow:      hidden;
+  overflow:        hidden;
 }
 
 [data-theme="dark"] #dm-toggle .dm-knob {
   transform: translateX(22px);
 }
 
-/* Sun icon */
+/* Sun icon (visible in light mode) */
 #dm-toggle .dm-icon-sun {
   position:   absolute;
   font-size:  11px;
@@ -339,7 +364,7 @@ h3[id] {
   line-height: 1;
 }
 
-/* Moon icon */
+/* Moon icon (visible in dark mode) */
 #dm-toggle .dm-icon-moon {
   position:   absolute;
   font-size:  11px;
@@ -359,19 +384,7 @@ h3[id] {
   transform: rotate(0deg) scale(1);
 }
 
-/* Label text next to the toggle */
-#dm-toggle .dm-label {
-  font-size:   0.72em;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color:       var(--text-muted);
-  transition:  color 0.3s ease;
-  white-space: nowrap;
-  user-select: none;
-}
-
-/* Hover: glow effect on track */
+/* Hover glow */
 #dm-toggle:hover .dm-track {
-  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.25);
+  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
 }

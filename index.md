@@ -54,11 +54,11 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 ### Education
 
-| Degree | Institution | Period | CGPA |
-|--------|-------------|--------|------|
-| Ph.D. in Computer Science & Engineering | IIT Bombay, Mumbai | 2024 – 2029 | 9.13/10.00 |
-| M.Sc. in Computer Science | RKMVERI, Howrah | 2021 – 2023 | 9.69/10.00 |
-| B.Sc. in Computer Science | Bankura Sammilani College | 2018 – 2021 | 9.19/10.00 |
+| Degree | Institution | Years | CGPA |
+|--------|-------------|-------|------|
+| Ph.D., CSE | [IIT Bombay](https://www.iitb.ac.in/) | 2024–29 | 9.13/10 |
+| M.Sc., CS | [RKMVERI, Howrah](https://www.rkmvu.ac.in/) | 2021–23 | 9.69/10 |
+| B.Sc., CS | [Bankura Sammilani](http://bankurasammilanicollege.net/) | 2018–21 | 9.19/10 |
 
 **M.Sc. Thesis:** Automatic Recognition and Generation of Indian Sign Language
 
