@@ -1,11 +1,12 @@
 /**
  * darkmode.js — Dark / Light mode toggle for subhankarnag.github.io
  *
- * Bug fixes applied:
- *  - BUG 4/5: CSS sibling selectors "#projects ~ * h3" were wrong (h3 are
- *    direct siblings of #projects, not nested). Instead, JS adds
- *    .project-heading class to the correct elements after DOM is ready.
- *  - BUG 7: Removed empty .dm-label span (was never populated).
+ * Responsibilities:
+ *  1. Reads saved theme from localStorage or OS preference.
+ *  2. Applies data-theme="dark" on <html> immediately (before paint) to avoid flash.
+ *  3. Injects the dark mode toggle button into .masthead__inner-wrap (outside greedy-nav)
+ *     so that greedy-nav width calculations and responsive collapsing work flawlessly.
+ *  4. Tags project headings with .project-heading class for custom styling.
  */
 
 (function () {
@@ -23,15 +24,16 @@
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
   }
 
-  /* Apply BEFORE first paint to avoid flash of wrong theme */
+  /* Apply BEFORE first paint */
   applyTheme(isDark);
 
-  /* ── 2. Build the toggle button (BUG 7 FIX: no empty label span) ── */
+  /* ── 2. Build toggle button DOM ── */
   function buildButton() {
     var btn = document.createElement("button");
     btn.id = "dm-toggle";
     btn.setAttribute("aria-label", "Toggle dark mode");
     btn.setAttribute("title",      "Toggle dark / light mode");
+    btn.setAttribute("type",       "button");
 
     btn.innerHTML =
       '<span class="dm-track">' +
@@ -44,18 +46,14 @@
     return btn;
   }
 
-  /* ── 3. BUG 4/5 FIX: Tag project h3s with .project-heading class ──
-     The CSS selectors "#projects ~ * h3" were structurally wrong because
-     h3 elements are DIRECT siblings of the #projects h2, not descendants
-     of siblings. We fix this in JS by walking the DOM after it's ready.   */
+  /* ── 3. Tag project h3s with .project-heading class ── */
   function tagProjectHeadings() {
     var projectsAnchor = document.getElementById("projects");
     if (!projectsAnchor) return;
 
-    /* Walk forward siblings of the #projects h2 until the next h2 */
     var el = projectsAnchor.nextElementSibling;
     while (el) {
-      if (el.tagName === "H2") break;   /* hit next section — stop */
+      if (el.tagName === "H2") break; // stop at next section
       if (el.tagName === "H3") {
         el.classList.add("project-heading");
       }
@@ -63,23 +61,21 @@
     }
   }
 
-  /* ── 4. Inject button into masthead & wire click ── */
+  /* ── 4. Inject toggle button into .masthead__inner-wrap ── */
   function init() {
-    /* Guard against double-injection */
     if (document.getElementById("dm-toggle")) return;
 
     var btn = buildButton();
 
-    /* Preferred injection point: visible links list in greedy-nav */
-    var target =
-      document.querySelector(".greedy-nav__visible-links") ||
-      document.querySelector(".greedy-nav")                ||
-      document.querySelector(".masthead__inner-wrap")      ||
-      document.querySelector(".masthead");
+    // Inject into .masthead__inner-wrap (outside greedy-nav to prevent clipping)
+    var innerWrap = document.querySelector(".masthead__inner-wrap");
+    var masthead  = document.querySelector(".masthead");
 
-    if (!target) return;
-
-    target.appendChild(btn);
+    if (innerWrap) {
+      innerWrap.appendChild(btn);
+    } else if (masthead) {
+      masthead.appendChild(btn);
+    }
 
     btn.addEventListener("click", function () {
       isDark = !isDark;
@@ -87,18 +83,22 @@
       localStorage.setItem(STORAGE_KEY, isDark ? "dark" : "light");
     });
 
-    /* Run DOM-dependent fixes after button is in place */
     tagProjectHeadings();
+
+    // Trigger resize event so greedy-nav recalibrates visible vs hidden links
+    setTimeout(function () {
+      window.dispatchEvent(new Event("resize"));
+    }, 50);
   }
 
-  /* ── 5. Run after DOM is ready ── */
+  /* ── 5. Run when DOM is ready ── */
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
 
-  /* ── 6. Follow OS preference changes when user hasn't manually picked ── */
+  /* ── 6. Follow OS preference changes if no manual override exists ── */
   if (window.matchMedia) {
     window.matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", function (e) {
