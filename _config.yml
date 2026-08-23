@@ -3,7 +3,7 @@ description: "PhD student in Deep Learning"
 remote_theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-include-cache
-
+  - jekyll-remote-theme
 
 author:
   name: "Subhankar Nag"
@@ -29,14 +29,4 @@ author:
 author_profile: true
 minimal_mistakes_skin: "default"  # or "air", "contrast", "dark"
 
-
-# Navigation
-nav:
-  - title: "About"
-    url: /about/
-  - title: "Publications"
-    url: /publications/
-  - title: "Projects"
-    url: /projects/
-  - title: "CV"
-    url: /cv/
+
