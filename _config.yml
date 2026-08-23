@@ -8,12 +8,15 @@ plugins:
 author:
   name: "Subhankar Nag"
   avatar: "/assets/images/iitb_dp_1.png" # optional
-  bio: "PhD Student, Deep Learning"
-  location: "India"
+  bio: "Ph.D. student in Computer Science and Engineering, IIT Bombay"
+  location: "Mumbai, India"
   links:
     - label: "Email"
       icon: "fas fa-envelope"
-      url: "mailto:snag081@email.com"
+      url: "mailto:subhankar@cse.iitb.ac.in"
+    - label: "Website"
+      icon: "fas fa-link"
+      url: "https://www.cse.iitb.ac.in/~subhankar"
     - label: "GitHub"
       icon: "fab fa-github"
       url: "https://github.com/subhankarnag"
