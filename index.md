@@ -1,11 +1,8 @@
 ---
 layout: single
-title: "Subhankar Nag — Ph.D. Student, IIT Bombay CSE"
+title: "Subhankar Nag"
 author_profile: true
 permalink: /
-description: "Subhankar Nag is a Ph.D. student in Computer Science and Engineering at IIT Bombay (IITB), Mumbai. He works on deep learning for medical image computing, including generative diffusion models, neural image compression, and federated learning."
-keywords: "Subhankar Nag, IIT Bombay, PhD CSE, Deep Learning, Medical Image Computing, Diffusion Models, Federated Learning, Neural Image Compression, IITB, Computer Science"
-og_image: "/assets/images/iitb_dp_1.png"
 ---
 
 I am a Ph.D. student in **Computer Science and Engineering** at the [Indian Institute of Technology Bombay (IIT Bombay)](https://www.iitb.ac.in/), Mumbai, India. My research focuses on **Deep Learning in Medical Image Computing**, under the supervision of [Prof. Suyash P. Awate](https://www.cse.iitb.ac.in/~suyash/).
@@ -61,7 +58,7 @@ My work spans generative diffusion models for medical image synthesis, neural im
 |--------|-------------|-------|------|
 | Ph.D., CSE | [IIT Bombay](https://www.iitb.ac.in/) | 2024–29 | 9.13/10 |
 | M.Sc., CS | [RKMVERI, Howrah](https://www.rkmvu.ac.in/) | 2021–23 | 9.69/10 |
-| B.Sc., CS | [Bankura Sammilani](http://bankurasammilanicollege.net/) | 2018–21 | 9.19/10 |
+| B.Sc., CS | [Bankura Sammilani College](http://bankurasammilanicollege.net/) | 2018–21 | 9.19/10 |
 
 **M.Sc. Thesis:** Automatic Recognition and Generation of Indian Sign Language
 
