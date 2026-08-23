@@ -52,10 +52,10 @@
   --accent:          #5e81b5;
   --accent-link:     #63b3ed;
 
-  /* BUG 1 FIX: solid dark bg; glassmorphism via backdrop-filter on .masthead */
-  --masthead-bg:     rgba(15, 18, 28, 0.88);
-  --masthead-text:   #f0f4ff;
-  --masthead-shadow: rgba(0, 0, 0, 0.40);
+  /* FULLY opaque — semi-transparent rgba blended over same dark bg = invisible text */
+  --masthead-bg:     #0d1020;
+  --masthead-text:   #eef2ff;
+  --masthead-shadow: rgba(0, 0, 0, 0.55);
 
   --table-head-bg:   #1e2740;
   --table-head-fg:   #e2e8f0;
@@ -112,20 +112,31 @@ body {
           backdrop-filter: blur(12px);
 }
 
-/* BUG 2 FIX: Cover ALL masthead text elements explicitly */
+/* Cover ALL masthead text — broad selectors + extra specificity to beat MM theme SCSS */
 .masthead a,
+.masthead a:link,
+.masthead a:visited,
 .masthead__inner-wrap a,
+.masthead__inner-wrap a:link,
 .greedy-nav a,
+.greedy-nav a:link,
+.greedy-nav__visible-links a,
+.greedy-nav__visible-links a:link,
 .masthead__title,
 .masthead__title a,
+.masthead__title a:link,
 .site-title,
 .site-title a,
-.site-subtitle {
+.site-title a:link,
+.site-subtitle,
+nav.greedy-nav .visible-links a {
   color: var(--masthead-text) !important;
+  text-shadow: none !important;
 }
 
 .greedy-nav a:hover,
-.masthead a:hover {
+.masthead a:hover,
+.greedy-nav__visible-links a:hover {
   color: var(--accent-link) !important;
 }
 
@@ -135,6 +146,18 @@ body {
   animation: none !important;
   opacity: 1 !important;
   background-color: var(--bg) !important;
+}
+
+/*
+  BUG 2 FIX — sticky sidebar photo gets cropped under sticky masthead.
+  Minimal Mistakes sets .sidebar.sticky { top: 2em } which was fine when
+  the masthead scrolled away. Now that masthead is sticky at top:0 (~65px),
+  we bump the sidebar's sticky offset to clear it.
+*/
+.sidebar.sticky {
+  top: 68px !important;
+  max-height: calc(100vh - 68px) !important;
+  overflow-y: auto;
 }
 
 .author__name,
