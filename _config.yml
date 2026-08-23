@@ -1,32 +1,48 @@
 title: "Subhankar Nag"
-description: "PhD student in Deep Learning"
-remote_theme: "mmistakes/minimal-mistakes"
+description: "Ph.D. student in CSE at IIT Bombay | Deep Learning | Medical Image Computing"
+url: "https://subhankarnag.github.io"
+
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+
 plugins:
   - jekyll-include-cache
   - jekyll-remote-theme
+  - jekyll-redirect-from
 
+# ────── Author / Sidebar ──────
 author:
-  name: "Subhankar Nag"
-  avatar: "/assets/images/iitb_dp_1.png" # optional
-  bio: "Ph.D. student in Computer Science and Engineering, IIT Bombay"
-  location: "Mumbai, India"
+  name       : "Subhankar Nag"
+  avatar     : "/assets/images/iitb_dp_1.png"
+  bio        : "Ph.D. Student, CSE<br>IIT Bombay"
+  location   : "Mumbai, India"
   links:
     - label: "Email"
-      icon: "fas fa-envelope"
-      url: "mailto:subhankar@cse.iitb.ac.in"
+      icon : "fas fa-fw fa-envelope-square"
+      url  : "mailto:subhankar@cse.iitb.ac.in"
     - label: "Website"
-      icon: "fas fa-link"
-      url: "https://www.cse.iitb.ac.in/~subhankar"
+      icon : "fas fa-fw fa-link"
+      url  : "https://www.cse.iitb.ac.in/~subhankar"
     - label: "GitHub"
-      icon: "fab fa-github"
-      url: "https://github.com/subhankarnag"
+      icon : "fab fa-fw fa-github"
+      url  : "https://github.com/subhankarnag"
     - label: "Google Scholar"
-      icon: "ai ai-google-scholar"
-      url: "https://scholar.google.com/..."
+      icon : "ai ai-google-scholar-square"
+      url  : "https://scholar.google.com/"
 
+# ────── Global defaults ──────
+defaults:
+  - scope:
+      path: ""
+    values:
+      author_profile: true
+      layout: single
 
-# Sidebar settings
-author_profile: true
-minimal_mistakes_skin: "default"  # or "air", "contrast", "dark"
+# ────── Skin ──────
+minimal_mistakes_skin: "default"
 
-
+# ────── Build ──────
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+include:
+  - _pages
