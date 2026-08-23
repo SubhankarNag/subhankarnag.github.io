@@ -5,7 +5,6 @@ author_profile: true
 permalink: /
 description: "Subhankar Nag is a Ph.D. student in Computer Science and Engineering at IIT Bombay (IITB), Mumbai. He works on deep learning for medical image computing, including generative diffusion models, neural image compression, and federated learning."
 keywords: "Subhankar Nag, IIT Bombay, PhD CSE, Deep Learning, Medical Image Computing, Diffusion Models, Federated Learning, Neural Image Compression, IITB, Computer Science"
-author: "Subhankar Nag"
 og_image: "/assets/images/iitb_dp_1.png"
 ---
 
