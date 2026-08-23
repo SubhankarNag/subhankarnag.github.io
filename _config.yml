@@ -27,7 +27,7 @@ author:
     #   icon : "fab fa-fw fa-github"
     #   url  : "https://github.com/subhankarnag"
     - label: "Google Scholar"
-      icon : "ai ai-fw ai-google-scholar"
+      icon : "ai ai-google-scholar"
       url  : "https://scholar.google.com/citations?user=cR80omQAAAAJ&hl=en"
   # Used by SEO plugins and JSON-LD generation
   github : "subhankarnag"
