@@ -410,17 +410,18 @@ nav.greedy-nav {
   font-weight: 700 !important;
   margin-top: 0.5em !important;
   margin-bottom: 0.2em !important;
+  font-size: 1.25em !important;
 }
 
 .author__bio {
   color: var(--text-muted) !important;
-  font-size: 0.9em !important;
+  font-size: 1em !important;
   margin-bottom: 0.6em !important;
 }
 
 .author__location {
   color: var(--text-muted) !important;
-  font-size: 0.85em !important;
+  font-size: 0.95em !important;
 }
 
 .author__urls {
@@ -587,10 +588,16 @@ h3[id] {
 .page__content li {
   line-height: 1.8;
   color: var(--text) !important;
+  font-size: 0.95em;
 }
 
 .page__content > p:first-of-type {
-  font-size: 1.04em;
+  font-size: 1em;
+}
+
+/* ── 14. Hide Permalinks ── */
+.header-link {
+  display: none !important;
 }
 
 /* ── 13. Footer ── */
