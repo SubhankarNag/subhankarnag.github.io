@@ -319,10 +319,10 @@ nav.greedy-nav {
     position: static !important;
     float: none !important;
     margin-bottom: 2em !important;
-    padding: 1.2em !important;
-    background-color: var(--bg-subtle) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 8px !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
     box-sizing: border-box !important;
     text-align: left !important;
   }
@@ -337,7 +337,7 @@ nav.greedy-nav {
     display: block !important;
     float: left !important;
     width: 110px !important;
-    margin: 0 1.2em 0.5em 0 !important;
+    margin: 0 1.2em 1.5em 0 !important;
   }
 
   .author__avatar img {
@@ -359,7 +359,8 @@ nav.greedy-nav {
   .author__urls-wrapper {
     clear: both !important;
     display: block !important;
-    margin-top: 1em !important;
+    margin-top: 1.5em !important;
+    padding-top: 0.5em !important;
   }
 
   /* Hide the "Follow" button because links will always be visible on mobile */
