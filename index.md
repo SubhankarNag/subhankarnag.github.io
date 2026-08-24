@@ -5,7 +5,7 @@ author_profile: true
 permalink: /
 ---
 
-I am a Ph.D. student in **Computer Science and Engineering** at the [Indian Institute of Technology Bombay (IIT Bombay)](https://www.iitb.ac.in/), Mumbai, India. My research focuses on **Deep Learning in Medical Image Computing**, under the supervision of [Prof. Suyash P. Awate](https://www.cse.iitb.ac.in/~suyash/).
+I am a Ph.d. Scholar in **Computer Science and Engineering** at the [Indian Institute of Technology Bombay (IIT Bombay)](https://www.iitb.ac.in/), Mumbai, India. My research focuses on **Deep Learning in Medical Image Computing**, under the supervision of [Prof. Suyash P. Awate](https://www.cse.iitb.ac.in/~suyash/).
 
 My work spans generative diffusion models for medical image synthesis, neural image compression for advanced MRI, and privacy-preserving machine learning.
 

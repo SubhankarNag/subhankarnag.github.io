@@ -1,6 +1,6 @@
 # Subhankar Nag — Academic Website
 
-Personal academic website of **Subhankar Nag**, Ph.D. student in Computer Science and Engineering at IIT Bombay.
+Personal academic website of **Subhankar Nag**, Ph.d. Scholar in Computer Science and Engineering at IIT Bombay.
 
 🌐 **Live site:** [subhankarnag.github.io](https://subhankarnag.github.io)
 
