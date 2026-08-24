@@ -489,7 +489,7 @@ nav.greedy-nav {
 /* ── 6. Section Anchor Scroll Offset ── */
 h2[id],
 h3[id] {
-  scroll-margin-top: 85px;
+  scroll-margin-top: 120px;
 }
 
 /* ── 7. Section Headings ── */
