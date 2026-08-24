@@ -93,7 +93,7 @@ nav.greedy-nav,
 /* ── 1. Smooth Scrolling ── */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 150px !important;
+  scroll-padding-top: 75px !important;
 }
 
 /* ── 2. Page Background ── */
@@ -494,7 +494,7 @@ h3[id],
 h4[id],
 h5[id],
 h6[id] {
-  scroll-margin-top: 150px !important;
+  scroll-margin-top: 75px !important;
 }
 
 /* ── 7. Section Headings ── */
