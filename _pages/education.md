@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Education"
-permalink: /cv/
+permalink: /education/
 author_profile: true
 redirect_to: /#education
 ---

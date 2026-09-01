@@ -42,17 +42,22 @@ subhankarnag.github.io/
 │   └── footer.html         # Custom footer (empty = uses theme default)
 ├── _pages/
 │   ├── about.md            # Redirects → /#research
-│   ├── cv.md               # Redirects → /#cv
+│   ├── cv.md               # Redirects → /#education
+│   ├── education.md        # Redirects → /#education
 │   ├── projects.md         # Redirects → /#projects
 │   └── publications.md     # Redirects → /#publications
 ├── assets/
 │   ├── css/
-│   │   └── custom-styles.css   # Sticky header, typography, tables, animations
-│   └── images/
-│       └── iitb_dp_1.png       # Profile photo
+│   │   └── custom-styles.css   # Theme styles, light/dark mode, layout
+│   ├── images/
+│   │   └── iitb_dp_1.png       # Profile photo
+│   ├── js/
+│   │   └── darkmode.js         # Theme toggle logic
+│   └── pdf/
+│       └── cv.pdf              # Curriculum Vitae PDF
 ├── index.md                # Single-page homepage (all sections)
-├── Gemfile                 # Ruby gem dependencies (Gemfile.lock is gitignored)
-└── .ruby-version           # Local dev only — gitignored; specifies Ruby 3.1.2
+├── Gemfile                 # Ruby gem dependencies
+└── .ruby-version           # Ruby version specification
 ```
 
 ---
@@ -61,7 +66,7 @@ subhankarnag.github.io/
 
 ### Prerequisites
 
-- [Ruby](https://www.ruby-lang.org/) 3.1.2 (version specified in `.ruby-version`; use [rbenv](https://github.com/rbenv/rbenv) or [RVM](https://rvm.io/) to manage versions)
+- [Ruby](https://www.ruby-lang.org/) (use [rbenv](https://github.com/rbenv/rbenv) or [RVM](https://rvm.io/) to manage versions)
 - [Bundler](https://bundler.io/) (`gem install bundler`)
 
 ### Setup & Run
@@ -90,7 +95,7 @@ All content lives in [`index.md`](./index.md). Edit the relevant section directl
 | Research Interests | `#research` | After intro paragraph |
 | Publications | `#publications` | After research interests |
 | Projects | `#projects` | After publications |
-| CV / Education | `#cv` | After projects |
+| Education | `#education` | After projects |
 
 After editing, commit and push — GitHub Pages rebuilds automatically (usually within 1–2 minutes).
 

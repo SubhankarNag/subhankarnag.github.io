@@ -1,9 +1,9 @@
 /* ================================================================
-   custom-styles.css — Subhankar Nag Academic Website
-   Light + Dark mode with CSS custom properties
+   Custom Styles — Subhankar Nag Academic Website
+   Light / Dark Mode Support & Responsive Polish
    ================================================================ */
 
-/* ── CSS Variables: Light Mode (default) ── */
+/* --- CSS Variables: Light Mode --- */
 :root {
   --bg:              #ffffff;
   --bg-subtle:       #f8fafc;
@@ -33,9 +33,11 @@
   --toggle-track-off:#cbd5e1;
   --toggle-track-on: #3b82f6;
   --toggle-knob:     #ffffff;
+
+  --selection-bg:    rgba(2, 132, 199, 0.2);
 }
 
-/* ── CSS Variables: Dark Mode ── */
+/* --- CSS Variables: Dark Mode --- */
 [data-theme="dark"] {
   --bg:              #0b0f19;
   --bg-subtle:       #111827;
@@ -65,9 +67,11 @@
   --toggle-track-off:#cbd5e1;
   --toggle-track-on: #3b82f6;
   --toggle-knob:     #ffffff;
+
+  --selection-bg:    rgba(56, 189, 248, 0.3);
 }
 
-/* ── Global Transitions for Theme Toggle ── */
+/* --- Smooth Theme Transitions --- */
 body,
 .masthead,
 .masthead__inner-wrap,
@@ -90,19 +94,32 @@ nav.greedy-nav,
     box-shadow       0.3s ease;
 }
 
-/* ── 1. Smooth Scrolling ── */
+/* --- Selection Styling --- */
+::selection {
+  background: var(--selection-bg);
+  color: var(--heading);
+}
+
+::-moz-selection {
+  background: var(--selection-bg);
+  color: var(--heading);
+}
+
+/* --- Scrolling & Base Layout --- */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 75px !important;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* ── 2. Page Background ── */
 body {
   background-color: var(--bg) !important;
   color: var(--text) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── 3. Masthead (Navbar) — Solid Dark in Dark Mode, Sticky ── */
+/* --- Masthead / Navigation --- */
 .masthead {
   position: -webkit-sticky !important;
   position: sticky !important;
@@ -176,7 +193,7 @@ nav.greedy-nav {
   margin: 0 0.4em !important;
 }
 
-/* Nav links styling */
+/* Nav Links & Active State */
 .masthead a,
 .masthead a:link,
 .masthead a:visited,
@@ -192,6 +209,7 @@ nav.greedy-nav {
   text-shadow: none !important;
   font-weight: 500 !important;
   transition: color 0.15s ease !important;
+  position: relative;
 }
 
 .greedy-nav a:hover,
@@ -200,8 +218,25 @@ nav.greedy-nav {
   color: var(--accent-link) !important;
 }
 
-/* Hamburger toggle button */
-.greedy-nav__toggle {
+.greedy-nav .visible-links a.active {
+  color: var(--accent-link) !important;
+  font-weight: 600 !important;
+}
+
+.greedy-nav .visible-links a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-link);
+  border-radius: 2px;
+}
+
+/* Hamburger Toggle Button */
+.greedy-nav__toggle,
+.greedy-nav button {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -215,13 +250,23 @@ nav.greedy-nav {
   margin: 0 0 0 0.4em !important;
   color: var(--masthead-text) !important;
   flex-shrink: 0 !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.greedy-nav__toggle:focus,
+.greedy-nav__toggle:active,
+.greedy-nav button:focus,
+.greedy-nav button:active {
+  background: transparent !important;
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .greedy-nav__toggle.hidden {
   display: none !important;
 }
 
-/* Draw 3-bar hamburger lines */
 .greedy-nav__toggle .navicon,
 .greedy-nav__toggle .navicon::before,
 .greedy-nav__toggle .navicon::after,
@@ -239,14 +284,16 @@ nav.greedy-nav {
   background-color: var(--accent-link) !important;
 }
 
-/* Mobile dropdown menu */
+/* Mobile Dropdown Menu */
 .greedy-nav .hidden-links {
   position: absolute !important;
   top: 100% !important;
   right: 0 !important;
-  margin-top: 6px !important;
-  background: var(--bg-subtle) !important;
-  background-color: var(--bg-subtle) !important;
+  margin-top: 8px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   border: 1px solid var(--border) !important;
   border-radius: 8px !important;
   box-shadow: 0 10px 25px var(--masthead-shadow) !important;
@@ -254,6 +301,15 @@ nav.greedy-nav {
   min-width: 160px !important;
   list-style: none !important;
   z-index: 100 !important;
+}
+
+[data-theme="dark"] .greedy-nav .hidden-links {
+  background: rgba(15, 23, 42, 0.94) !important;
+  background-color: rgba(15, 23, 42, 0.94) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7) !important;
 }
 
 .greedy-nav .hidden-links.hidden {
@@ -264,6 +320,8 @@ nav.greedy-nav {
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 .greedy-nav .hidden-links a {
@@ -274,11 +332,22 @@ nav.greedy-nav {
   font-weight: 500 !important;
   text-decoration: none !important;
   border: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
   transition: background-color 0.15s ease, color 0.15s ease !important;
 }
 
-.greedy-nav .hidden-links a:hover {
+.greedy-nav .hidden-links a:hover,
+.greedy-nav .hidden-links a:focus {
+  background: var(--bg-alt) !important;
   background-color: var(--bg-alt) !important;
+  color: var(--accent-link) !important;
+}
+
+[data-theme="dark"] .greedy-nav .hidden-links a:hover,
+[data-theme="dark"] .greedy-nav .hidden-links a:focus {
+  background: rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
   color: var(--accent-link) !important;
 }
 
@@ -287,10 +356,18 @@ nav.greedy-nav {
 }
 
 .greedy-nav .hidden-links::after {
-  border-bottom-color: var(--bg-subtle) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.95) !important;
 }
 
-/* ── 4. Sidebar & Author Profile ── */
+[data-theme="dark"] .greedy-nav .hidden-links::before {
+  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .greedy-nav .hidden-links::after {
+  border-bottom-color: #0f172a !important;
+}
+
+/* --- Sidebar & Author Profile --- */
 .sidebar {
   -webkit-animation: none !important;
   animation: none !important;
@@ -300,7 +377,6 @@ nav.greedy-nav {
   background-color: var(--bg) !important;
 }
 
-/* Desktop layout (>= 1024px) */
 @media (min-width: 64em) {
   .sidebar.sticky {
     position: -webkit-sticky !important;
@@ -312,7 +388,6 @@ nav.greedy-nav {
   }
 }
 
-/* Tablet & Mobile layout (< 1024px): Keep profile visible as a top card instead of hiding it */
 @media (max-width: 63.99em) {
   .sidebar {
     width: 100% !important;
@@ -364,7 +439,6 @@ nav.greedy-nav {
     padding-top: 0.5em !important;
   }
 
-  /* Hide the "Follow" button because links will always be visible on mobile */
   .author__urls-wrapper button,
   .author__urls-wrapper .btn {
     display: none !important;
@@ -378,8 +452,6 @@ nav.greedy-nav {
     padding: 0 !important;
     margin: 0 !important;
     list-style: none !important;
-    
-    /* Override Minimal Mistakes dropdown styles */
     position: static !important;
     background: transparent !important;
     box-shadow: none !important;
@@ -446,26 +518,34 @@ nav.greedy-nav {
   margin-right: 0.4em !important;
 }
 
-/* ── Custom colored icons for Author Profile ── */
+/* Sidebar Icon Colors */
 .author__location i,
 .author__location .fa-map-marker-alt,
 .author__location .svg-inline--fa {
-  color: #ef4444 !important; /* Red */
+  color: #ef4444 !important;
 }
 
 .author__urls .fa-envelope {
-  color: #ea4335 !important; /* Red/Orange */
+  color: #ea4335 !important;
 }
 
 .author__urls .fa-globe {
-  color: #0ea5e9 !important; /* Sky Blue */
+  color: #0ea5e9 !important;
+}
+
+.author__urls .fa-file-pdf {
+  color: #ef4444 !important;
+}
+
+.author__urls .fa-linkedin {
+  color: #0a66c2 !important;
 }
 
 .author__urls .ai-google-scholar {
-  color: #4285F4 !important; /* Google Blue */
+  color: #4285F4 !important;
 }
 
-/* Brighten icons in Dark Mode for better contrast */
+/* Dark mode adjustments for sidebar icons */
 [data-theme="dark"] .author__urls .fa-envelope {
   color: #fca5a5 !important; 
 }
@@ -474,11 +554,19 @@ nav.greedy-nav {
   color: #7dd3fc !important;
 }
 
+[data-theme="dark"] .author__urls .fa-file-pdf {
+  color: #f87171 !important;
+}
+
+[data-theme="dark"] .author__urls .fa-linkedin {
+  color: #60a5fa !important;
+}
+
 [data-theme="dark"] .author__urls .ai-google-scholar {
   color: #8ab4f8 !important;
 }
 
-/* ── 5. Main Content Area ── */
+/* --- Main Content Area --- */
 .page__content,
 .page__inner-wrap,
 #main,
@@ -487,7 +575,7 @@ nav.greedy-nav {
   background-color: var(--bg) !important;
 }
 
-/* ── 6. Section Anchor Scroll Offset ── */
+/* Anchor offset for sticky header */
 h1[id],
 h2[id],
 h3[id],
@@ -497,7 +585,7 @@ h6[id] {
   scroll-margin-top: 75px !important;
 }
 
-/* ── 7. Section Headings ── */
+/* Headings */
 .page__content h2 {
   font-size: 1.3em;
   font-weight: 700;
@@ -518,14 +606,12 @@ h6[id] {
   margin-bottom: 0.3em;
 }
 
-/* ── 8. Horizontal Rules ── */
 .page__content hr {
   border: none;
   border-top: 1px solid var(--border);
   margin: 2em 0;
 }
 
-/* ── 9. Project Headings (tagged by JS) ── */
 .project-heading {
   background: var(--pill-bg);
   border-left: 3px solid var(--accent);
@@ -536,12 +622,16 @@ h6[id] {
   margin-top: 1.5em;
 }
 
-/* ── 10. Tables ── */
+/* Tables */
 .page__content table {
   font-size: 0.875em;
   width: 100%;
-  border-collapse: collapse;
-  margin: 1em 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.2em 0;
+  border: 1px solid var(--table-border);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .page__content td:nth-child(3),
@@ -556,16 +646,17 @@ h6[id] {
   color: var(--table-head-fg) !important;
   font-weight: 600;
   text-align: left;
-  padding: 0.55em 0.9em !important;
+  padding: 0.65em 1em !important;
   letter-spacing: 0.03em;
 }
 
 .page__content td {
-  padding: 0.45em 0.9em !important;
+  padding: 0.55em 1em !important;
   border-bottom: 1px solid var(--table-border) !important;
   vertical-align: top;
   color: var(--text) !important;
   background-color: var(--bg) !important;
+  transition: background-color 0.15s ease;
 }
 
 .page__content tr:last-child td {
@@ -576,7 +667,11 @@ h6[id] {
   background-color: var(--bg-alt) !important;
 }
 
-/* ── 11. Links in Content ── */
+.page__content tr:hover td {
+  background-color: var(--pill-bg) !important;
+}
+
+/* Links */
 .page__content a {
   color: var(--accent-link) !important;
   text-decoration: none;
@@ -588,7 +683,14 @@ h6[id] {
   border-bottom-color: currentColor;
 }
 
-/* ── 12. Body Text ── */
+/* Focus Visible Accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-link) !important;
+  outline-offset: 2px !important;
+}
+
+/* Body Text */
 .page__content p,
 .page__content li {
   line-height: 1.8;
@@ -600,12 +702,11 @@ h6[id] {
   font-size: 1em;
 }
 
-/* ── 14. Hide Permalinks ── */
 .header-link {
   display: none !important;
 }
 
-/* ── 13. Footer ── */
+/* Footer */
 .page__footer {
   background-color: var(--bg-subtle) !important;
   color: var(--text-muted) !important;
@@ -616,10 +717,50 @@ h6[id] {
   color: var(--text-muted) !important;
 }
 
-/* ================================================================
-   DARK MODE TOGGLE BUTTON
-   ================================================================ */
+/* --- Back to Top Button --- */
+#back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--masthead-bg);
+  color: var(--heading);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px var(--masthead-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
 
+#back-to-top.visible {
+  opacity: 0.85;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#back-to-top:hover {
+  opacity: 1;
+  color: var(--accent-link);
+  border-color: var(--accent-link);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] #back-to-top {
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Theme Toggle Switch --- */
 #dm-toggle {
   display: flex !important;
   align-items: center !important;

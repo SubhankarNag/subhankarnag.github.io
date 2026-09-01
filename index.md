@@ -28,7 +28,8 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 **Subhankar Nag**, Suyash P. Awate.  
 *"How to train your generative diffusion model, when all training images are degraded, to model a distribution on high-quality images"*  
-**IEEE International Conference on Image Processing (ICIP) 2026** *(Accepted)*
+**IEEE International Conference on Image Processing (ICIP) 2026** *(Accepted)*  
+[[Paper / IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11630276/)]
 
 ---
 
@@ -38,10 +39,12 @@ My work spans generative diffusion models for medical image synthesis, neural im
 ### Handwritten Video Frame Interpolation using Region-Specific Loss *(2024)*
 - Implemented a CNN-based RIFE model with region-specific loss and extended input context
 - Improved reconstruction quality from **37.7 dB → 40.9 dB PSNR** (+3.2 dB)
+- [[GitHub](https://github.com/SubhankarNag/IE643_HVFI)]
 
 ### Brain Tumor Segmentation using Edge-Preserving Loss *(2024)*
 - Implemented UNet++ model for brain tumor segmentation on the BraTS dataset
 - Achieved **91.5 Dice score**, improving performance by +1.6 using edge-based loss
+- [[GitHub](https://github.com/mrityunjayshukla411/CS725_Final_Project)]
 
 ### Automatic Recognition and Generation of Indian Sign Language *(2023)*
 - Developed Transformer-based and 3D-CNN-based models for Indian Sign Language recognition
@@ -49,10 +52,8 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 ---
 
-## Curriculum Vitae
-{: #cv}
-
-### Education
+## Education
+{: #education}
 
 | Degree | Institution | Years | CGPA |
 |--------|-------------|-------|------|
@@ -64,7 +65,7 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 ---
 
-### Research Experience
+## Research Experience
 
 **Indian Institute of Technology Bombay** *(2024 – Present)*  
 *Supervisor: [Prof. Suyash P. Awate](https://www.cse.iitb.ac.in/~suyash/)*
@@ -75,7 +76,7 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 ---
 
-### Teaching Experience
+## Teaching Experience
 
 **Indian Institute of Technology Bombay** *(2024 – Present)*
 
@@ -84,7 +85,7 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 ---
 
-### Skills
+## Skills
 
 | Category | Details |
 |----------|---------|
@@ -94,6 +95,6 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 ---
 
-### Achievements
+## Achievements
 
 - **GATE CS 2024** — All India Rank **236** (out of 123,967 candidates)
