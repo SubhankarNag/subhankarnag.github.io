@@ -110,21 +110,76 @@
     var toggleBtn = document.querySelector(".greedy-nav__toggle, .greedy-nav button");
     if (!hiddenLinks) return;
 
-    // Close when tapping link inside
+    var backdrop = document.getElementById("nav-backdrop");
+    if (!backdrop) {
+      backdrop = document.createElement("div");
+      backdrop.id = "nav-backdrop";
+      document.body.appendChild(backdrop);
+    }
+
+    function closeMenu() {
+      hiddenLinks.classList.add("hidden");
+      backdrop.classList.remove("active");
+      if (toggleBtn) toggleBtn.classList.remove("close");
+    }
+
+    function syncBackdrop() {
+      if (!hiddenLinks.classList.contains("hidden")) {
+        backdrop.classList.add("active");
+      } else {
+        backdrop.classList.remove("active");
+      }
+    }
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", function () {
+        setTimeout(syncBackdrop, 20);
+      });
+    }
+
+    if (window.MutationObserver) {
+      var observer = new MutationObserver(function () {
+        syncBackdrop();
+      });
+      observer.observe(hiddenLinks, { attributes: true, attributeFilter: ["class"] });
+    }
+
+    // Close when tapping any link inside menu
     hiddenLinks.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        hiddenLinks.classList.add("hidden");
-        if (toggleBtn) toggleBtn.classList.remove("close");
+      if (e.target.tagName === "A" || e.target.closest("a")) {
+        closeMenu();
       }
     });
 
-    // Close when tapping anywhere outside (on the blurry backdrop)
-    document.addEventListener("click", function (e) {
+    // Close on click or touch directly on the backdrop
+    backdrop.addEventListener("click", closeMenu);
+    backdrop.addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      closeMenu();
+    }, { passive: false });
+
+    // Global outside click and touch handling
+    function handleOutside(e) {
       if (!hiddenLinks.classList.contains("hidden")) {
         if (!hiddenLinks.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
-          hiddenLinks.classList.add("hidden");
-          if (toggleBtn) toggleBtn.classList.remove("close");
+          closeMenu();
         }
+      }
+    }
+
+    document.addEventListener("click", handleOutside, true);
+    document.addEventListener("touchstart", function (e) {
+      if (!hiddenLinks.classList.contains("hidden")) {
+        if (!hiddenLinks.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+          closeMenu();
+        }
+      }
+    }, { passive: true });
+
+    // Close on Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !hiddenLinks.classList.contains("hidden")) {
+        closeMenu();
       }
     });
   }

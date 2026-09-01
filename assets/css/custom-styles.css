@@ -221,9 +221,9 @@ body {
   position: -webkit-sticky !important;
   position: sticky !important;
   top: 0;
-  z-index: 50 !important;
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  background: rgba(255, 255, 255, 0.9) !important;
+  z-index: 100 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
   backdrop-filter: blur(12px) saturate(180%) !important;
   border-bottom: 1px solid var(--border) !important;
@@ -233,8 +233,8 @@ body {
 
 [data-theme="dark"] .masthead,
 html[data-theme="dark"] .masthead {
-  background-color: rgba(11, 15, 25, 0.9) !important;
-  background: rgba(11, 15, 25, 0.9) !important;
+  background-color: rgba(11, 15, 25, 0.95) !important;
+  background: rgba(11, 15, 25, 0.95) !important;
   -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
   backdrop-filter: blur(12px) saturate(180%) !important;
   border-bottom: 1px solid var(--border) !important;
@@ -342,7 +342,7 @@ nav.greedy-nav {
   border-radius: 2px;
 }
 
-/* Hamburger Toggle Button */
+/* Hamburger Toggle Button (3 lines / X) */
 .greedy-nav__toggle,
 .greedy-nav button {
   display: flex !important;
@@ -358,6 +358,7 @@ nav.greedy-nav {
   margin: 0 0 0 0.4em !important;
   color: var(--masthead-text) !important;
   flex-shrink: 0 !important;
+  z-index: 105 !important;
   -webkit-tap-highlight-color: transparent !important;
 }
 
@@ -406,7 +407,7 @@ nav.greedy-nav {
   padding: 6px 0 !important;
   min-width: 170px !important;
   list-style: none !important;
-  z-index: 100 !important;
+  z-index: 110 !important;
 }
 
 [data-theme="dark"] .greedy-nav .hidden-links,
@@ -421,9 +422,8 @@ html[data-theme="dark"] .greedy-nav .hidden-links {
   display: none !important;
 }
 
-/* Full-screen Blurry Background Overlay behind the popup */
-.greedy-nav .hidden-links:not(.hidden)::before {
-  content: "" !important;
+/* Dedicated Blurry Page Backdrop Overlay */
+#nav-backdrop {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -431,22 +431,32 @@ html[data-theme="dark"] .greedy-nav .hidden-links {
   bottom: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  z-index: -1 !important;
+  z-index: 40 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  cursor: pointer !important;
+  -webkit-tap-highlight-color: transparent !important;
+  transition: opacity 0.25s ease, visibility 0.25s ease !important;
+}
+
+#nav-backdrop.active {
+  opacity: 1 !important;
+  visibility: visible !important;
   pointer-events: auto !important;
-  display: block !important;
 }
 
 /* Light Mode: Blurry Light Page Backdrop */
-html[data-theme="light"] .greedy-nav .hidden-links:not(.hidden)::before,
-html:not([data-theme="dark"]) .greedy-nav .hidden-links:not(.hidden)::before {
-  background: rgba(255, 255, 255, 0.7) !important;
+html[data-theme="light"] #nav-backdrop,
+html:not([data-theme="dark"]) #nav-backdrop {
+  background: rgba(255, 255, 255, 0.75) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
 }
 
 /* Dark Mode: Blurry Dark Page Backdrop */
-html[data-theme="dark"] .greedy-nav .hidden-links:not(.hidden)::before {
-  background: rgba(0, 0, 0, 0.65) !important;
+html[data-theme="dark"] #nav-backdrop {
+  background: rgba(0, 0, 0, 0.7) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
 }
