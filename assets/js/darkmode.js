@@ -107,13 +107,24 @@
 
   function setupMobileMenuAutoClose() {
     var hiddenLinks = document.querySelector(".greedy-nav .hidden-links");
-    var toggleBtn = document.querySelector(".greedy-nav__toggle");
+    var toggleBtn = document.querySelector(".greedy-nav__toggle, .greedy-nav button");
     if (!hiddenLinks) return;
 
+    // Close when tapping link inside
     hiddenLinks.addEventListener("click", function (e) {
       if (e.target.tagName === "A") {
         hiddenLinks.classList.add("hidden");
         if (toggleBtn) toggleBtn.classList.remove("close");
+      }
+    });
+
+    // Close when tapping anywhere outside (on the blurry backdrop)
+    document.addEventListener("click", function (e) {
+      if (!hiddenLinks.classList.contains("hidden")) {
+        if (!hiddenLinks.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+          hiddenLinks.classList.add("hidden");
+          if (toggleBtn) toggleBtn.classList.remove("close");
+        }
       }
     });
   }
