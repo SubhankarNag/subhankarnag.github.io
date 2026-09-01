@@ -633,6 +633,10 @@ html[data-theme="dark"] .greedy-nav .hidden-links::after {
   border-radius: 50% !important;
   border: 2px solid var(--border) !important;
   box-shadow: 0 2px 8px var(--masthead-shadow) !important;
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
 }
 
 .author__name {
@@ -698,8 +702,24 @@ html[data-theme="dark"] .greedy-nav .hidden-links::after {
   color: #0a66c2 !important;
 }
 
-.author__urls .ai-google-scholar {
-  color: #4285F4 !important;
+/* Modern Google Scholar Logo (Official Emblem) */
+.author__urls .ai-google-scholar,
+.ai-google-scholar {
+  display: inline-block !important;
+  width: 1.15em !important;
+  height: 1.15em !important;
+  vertical-align: -0.18em !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285F4' d='M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  margin-right: 0.4em !important;
+}
+
+.author__urls .ai-google-scholar::before,
+.ai-google-scholar::before {
+  content: "" !important;
+  display: none !important;
 }
 
 /* Dark mode adjustments for sidebar icons */
@@ -721,11 +741,6 @@ html[data-theme="dark"] .author__urls .fa-file-pdf {
 [data-theme="dark"] .author__urls .fa-linkedin,
 html[data-theme="dark"] .author__urls .fa-linkedin {
   color: #60a5fa !important;
-}
-
-[data-theme="dark"] .author__urls .ai-google-scholar,
-html[data-theme="dark"] .author__urls .ai-google-scholar {
-  color: #8ab4f8 !important;
 }
 
 /* --- Main Content Area --- */

@@ -2,6 +2,9 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
+<!-- Preload Largest Contentful Paint (LCP) Image -->
+<link rel="preload" as="image" href="/assets/images/iitb_dp_1.png">
+
 <!-- Custom Stylesheet -->
 <link rel="stylesheet" href="/assets/css/custom-styles.css">
 
@@ -9,11 +12,19 @@
 <link rel="icon" type="image/png" href="/assets/images/deep-learning-1.png">
 <link rel="apple-touch-icon" href="/assets/images/deep-learning-1.png">
 
-<!-- Academicons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<!-- Academicons (Non-blocking Font Loading) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"></noscript>
 
-<!-- Theme Init & ScrollSpy -->
-<script src="/assets/js/darkmode.js"></script>
+<!-- Immediate Theme Initialization to prevent render blocking & flash -->
+<script>
+  (function(){
+    var s = localStorage.getItem("dm-theme");
+    var d = s ? (s === "dark") : false;
+    document.documentElement.setAttribute("data-theme", d ? "dark" : "light");
+  })();
+</script>
+<script src="/assets/js/darkmode.js" defer></script>
 
 <!-- Mobile Browser Chrome Color -->
 <meta name="theme-color" id="meta-theme-color" content="#ffffff">
