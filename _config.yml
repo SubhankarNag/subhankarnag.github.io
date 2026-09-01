@@ -17,7 +17,7 @@ author:
   bio        : "Ph.d. Scholar, CSE<br>IIT Bombay"
   # location   : "Mumbai, India"
   links:
-    - label: "Email"
+    - label: "subhankar@cse.iitb.ac.in"
       icon : "fas fa-fw fa-envelope"
       url  : "mailto:subhankar@cse.iitb.ac.in"
     - label: "CV"
@@ -25,7 +25,7 @@ author:
       url  : "/assets/pdf/cv.pdf"
     - label: "LinkedIn"
       icon : "fab fa-fw fa-linkedin"
-      url  : "https://in.linkedin.com/in/subhankar-nag-58516b42b"
+      url  : "https://www.linkedin.com/in/subhankar-nag-58516b42b"
     - label: "Google Scholar"
       icon : "ai ai-google-scholar"
       url  : "https://scholar.google.com/citations?user=cR80omQAAAAJ&hl=en"

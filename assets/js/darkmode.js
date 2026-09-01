@@ -1,12 +1,15 @@
 (function () {
   "use strict";
 
+  /* ============================================================
+   * DEFAULT THEME CONFIGURATION
+   * Change DEFAULT_THEME to "light" or "dark" to set initial mode.
+   * ============================================================ */
+  var DEFAULT_THEME = "light"; // "light" | "dark"
+
   var STORAGE_KEY = "dm-theme";
   var saved = localStorage.getItem(STORAGE_KEY);
-  var prefersDark = window.matchMedia &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  var isDark = saved ? saved === "dark" : prefersDark;
+  var isDark = saved ? (saved === "dark") : (DEFAULT_THEME === "dark");
 
   function updateThemeColorMeta(dark) {
     var meta = document.getElementById("meta-theme-color");
@@ -17,6 +20,9 @@
 
   function applyTheme(dark) {
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    if (document.body) {
+      document.body.setAttribute("data-theme", dark ? "dark" : "light");
+    }
     updateThemeColorMeta(dark);
   }
 
@@ -72,11 +78,6 @@
     var navLinks = document.querySelectorAll(".greedy-nav a");
     if (!sections.length || !navLinks.length) return;
 
-    var sectionMap = {};
-    sections.forEach(function (sec) {
-      sectionMap[sec.id] = sec;
-    });
-
     function onScroll() {
       var scrollPos = window.pageYOffset + 120;
       var currentId = "";
@@ -130,6 +131,8 @@
   }
 
   function init() {
+    applyTheme(isDark);
+
     if (document.getElementById("dm-toggle")) return;
 
     var btn = buildButton();

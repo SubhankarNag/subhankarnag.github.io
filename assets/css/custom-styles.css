@@ -1,10 +1,12 @@
 /* ================================================================
    Custom Styles — Subhankar Nag Academic Website
-   Light / Dark Mode Support & Responsive Polish
+   Light / Dark Mode Support & Responsive Layout
    ================================================================ */
 
 /* --- CSS Variables: Light Mode --- */
-:root {
+:root,
+html[data-theme="light"],
+body[data-theme="light"] {
   --bg:              #ffffff;
   --bg-subtle:       #f8fafc;
   --bg-alt:          #f1f5f9;
@@ -38,7 +40,9 @@
 }
 
 /* --- CSS Variables: Dark Mode --- */
-[data-theme="dark"] {
+[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"] {
   --bg:              #0b0f19;
   --bg-subtle:       #111827;
   --bg-alt:          #1f2937;
@@ -71,7 +75,43 @@
   --selection-bg:    rgba(56, 189, 248, 0.3);
 }
 
-/* --- Smooth Theme Transitions --- */
+/* --- Global Background Overrides across all containers --- */
+html,
+body,
+#main,
+.page,
+.page__inner-wrap,
+.page__content,
+.initial-content,
+.layout--single,
+.layout--default,
+.layout--home,
+.layout--archive,
+article,
+.archive {
+  background-color: var(--bg) !important;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+[data-theme="dark"],
+[data-theme="dark"] body,
+[data-theme="dark"] #main,
+[data-theme="dark"] .page,
+[data-theme="dark"] .page__inner-wrap,
+[data-theme="dark"] .page__content,
+[data-theme="dark"] .initial-content,
+[data-theme="dark"] .layout--single,
+[data-theme="dark"] .sidebar,
+[data-theme="dark"] .masthead,
+[data-theme="dark"] article,
+[data-theme="dark"] .archive {
+  background-color: #0b0f19 !important;
+  background: #0b0f19 !important;
+  color: #cbd5e1 !important;
+}
+
+/* --- Smooth Transitions for Theme Switching --- */
 body,
 .masthead,
 .masthead__inner-wrap,
@@ -113,8 +153,8 @@ html {
 }
 
 body {
-  background-color: var(--bg) !important;
-  color: var(--text) !important;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -164,6 +204,11 @@ nav.greedy-nav {
   width: 100% !important;
   min-width: 0 !important;
   position: relative !important;
+}
+
+.greedy-nav::before,
+.greedy-nav.close::before {
+  display: none !important;
 }
 
 .greedy-nav .site-title {
@@ -290,13 +335,11 @@ nav.greedy-nav {
   top: 100% !important;
   right: 0 !important;
   margin-top: 8px !important;
-  background: rgba(255, 255, 255, 0.95) !important;
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   border: 1px solid var(--border) !important;
   border-radius: 8px !important;
-  box-shadow: 0 10px 25px var(--masthead-shadow) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
   padding: 6px 0 !important;
   min-width: 160px !important;
   list-style: none !important;
@@ -304,12 +347,10 @@ nav.greedy-nav {
 }
 
 [data-theme="dark"] .greedy-nav .hidden-links {
-  background: rgba(15, 23, 42, 0.94) !important;
-  background-color: rgba(15, 23, 42, 0.94) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7) !important;
+  background: #111827 !important;
+  background-color: #111827 !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8) !important;
 }
 
 .greedy-nav .hidden-links.hidden {
@@ -344,11 +385,15 @@ nav.greedy-nav {
   color: var(--accent-link) !important;
 }
 
+[data-theme="dark"] .greedy-nav .hidden-links a {
+  color: #f8fafc !important;
+}
+
 [data-theme="dark"] .greedy-nav .hidden-links a:hover,
 [data-theme="dark"] .greedy-nav .hidden-links a:focus {
-  background: rgba(255, 255, 255, 0.08) !important;
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  color: var(--accent-link) !important;
+  background: #1f2937 !important;
+  background-color: #1f2937 !important;
+  color: #38bdf8 !important;
 }
 
 .greedy-nav .hidden-links::before {
@@ -356,15 +401,15 @@ nav.greedy-nav {
 }
 
 .greedy-nav .hidden-links::after {
-  border-bottom-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: #ffffff !important;
 }
 
 [data-theme="dark"] .greedy-nav .hidden-links::before {
-  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+  border-bottom-color: #1e293b !important;
 }
 
 [data-theme="dark"] .greedy-nav .hidden-links::after {
-  border-bottom-color: #0f172a !important;
+  border-bottom-color: #111827 !important;
 }
 
 /* --- Sidebar & Author Profile --- */
@@ -755,7 +800,7 @@ button:focus-visible {
 }
 
 [data-theme="dark"] #back-to-top {
-  background: rgba(17, 24, 39, 0.9);
+  background: #111827;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
 }
