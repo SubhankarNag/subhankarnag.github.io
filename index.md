@@ -15,7 +15,6 @@ My work spans generative diffusion models for medical image synthesis, neural im
 {: #research}
 
 - Generative models for medical image synthesis
-- Medical image computing (MRI, segmentation)
 - Neural image compression
 - Privacy-preserving machine learning (federated learning, gradient inversion)
 
@@ -28,7 +27,7 @@ My work spans generative diffusion models for medical image synthesis, neural im
 
 **Subhankar Nag**, Suyash P. Awate.  
 *"How to train your generative diffusion model, when all training images are degraded, to model a distribution on high-quality images"*  
-**IEEE International Conference on Image Processing (ICIP) 2026** *(Accepted)*  
+**IEEE International Conference on Image Processing (ICIP) 2026** 
 [[Paper / IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11630276/)]
 
 ---
@@ -39,12 +38,12 @@ My work spans generative diffusion models for medical image synthesis, neural im
 ### Handwritten Video Frame Interpolation using Region-Specific Loss *(2024)*
 - Implemented a CNN-based RIFE model with region-specific loss and extended input context
 - Improved reconstruction quality from **37.7 dB → 40.9 dB PSNR** (+3.2 dB)
-- [[GitHub](https://github.com/SubhankarNag/IE643_HVFI)]
+<!-- - [[GitHub](https://github.com/SubhankarNag/IE643_HVFI)] -->
 
 ### Brain Tumor Segmentation using Edge-Preserving Loss *(2024)*
 - Implemented UNet++ model for brain tumor segmentation on the BraTS dataset
 - Achieved **91.5 Dice score**, improving performance by +1.6 using edge-based loss
-- [[GitHub](https://github.com/mrityunjayshukla411/CS725_Final_Project)]
+<!-- - [[GitHub](https://github.com/mrityunjayshukla411/CS725_Final_Project)] -->
 
 ### Automatic Recognition and Generation of Indian Sign Language *(2023)*
 - Developed Transformer-based and 3D-CNN-based models for Indian Sign Language recognition
