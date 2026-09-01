@@ -222,11 +222,22 @@ body {
   position: sticky !important;
   top: 0;
   z-index: 50 !important;
-  background-color: var(--masthead-bg) !important;
-  background: var(--masthead-bg) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+  backdrop-filter: blur(12px) saturate(180%) !important;
   border-bottom: 1px solid var(--border) !important;
   box-shadow: 0 1px 6px var(--masthead-shadow);
   padding: 0 !important;
+}
+
+[data-theme="dark"] .masthead,
+html[data-theme="dark"] .masthead {
+  background-color: rgba(11, 15, 25, 0.9) !important;
+  background: rgba(11, 15, 25, 0.9) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+  backdrop-filter: blur(12px) saturate(180%) !important;
+  border-bottom: 1px solid var(--border) !important;
 }
 
 .masthead__inner-wrap {
@@ -234,8 +245,8 @@ body {
   flex-direction: row !important;
   align-items: center !important;
   justify-content: space-between !important;
-  background-color: var(--masthead-bg) !important;
-  background: var(--masthead-bg) !important;
+  background-color: transparent !important;
+  background: transparent !important;
   max-width: 1280px !important;
   margin: 0 auto !important;
   padding: 0.4em 1em !important;
@@ -381,29 +392,33 @@ nav.greedy-nav {
   background-color: var(--accent-link) !important;
 }
 
-/* Mobile Dropdown Menu */
+/* Mobile Dropdown Menu — Translucent Frosted Glass */
 .greedy-nav .hidden-links {
   position: absolute !important;
   top: 100% !important;
   right: 0 !important;
   margin-top: 8px !important;
-  background: #ffffff !important;
-  background-color: #ffffff !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 8px !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
   padding: 6px 0 !important;
-  min-width: 160px !important;
+  min-width: 165px !important;
   list-style: none !important;
   z-index: 100 !important;
 }
 
 [data-theme="dark"] .greedy-nav .hidden-links,
 html[data-theme="dark"] .greedy-nav .hidden-links {
-  background: #111827 !important;
-  background-color: #111827 !important;
-  border: 1px solid #1e293b !important;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8) !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  background-color: rgba(15, 23, 42, 0.85) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6) !important;
 }
 
 .greedy-nav .hidden-links.hidden {
@@ -420,7 +435,7 @@ html[data-theme="dark"] .greedy-nav .hidden-links {
 
 .greedy-nav .hidden-links a {
   display: block !important;
-  padding: 8px 16px !important;
+  padding: 9px 18px !important;
   color: var(--heading) !important;
   font-size: 0.92em !important;
   font-weight: 500 !important;
@@ -433,8 +448,8 @@ html[data-theme="dark"] .greedy-nav .hidden-links {
 
 .greedy-nav .hidden-links a:hover,
 .greedy-nav .hidden-links a:focus {
-  background: var(--bg-alt) !important;
-  background-color: var(--bg-alt) !important;
+  background: rgba(241, 245, 249, 0.85) !important;
+  background-color: rgba(241, 245, 249, 0.85) !important;
   color: var(--accent-link) !important;
 }
 
@@ -449,27 +464,27 @@ html[data-theme="dark"] .greedy-nav .hidden-links a {
 [data-theme="dark"] .greedy-nav .hidden-links a:focus,
 html[data-theme="dark"] .greedy-nav .hidden-links a:hover,
 html[data-theme="dark"] .greedy-nav .hidden-links a:focus {
-  background: #1f2937 !important;
-  background-color: #1f2937 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
   color: #38bdf8 !important;
 }
 
 .greedy-nav .hidden-links::before {
-  border-bottom-color: var(--border) !important;
+  border-bottom-color: rgba(226, 232, 240, 0.85) !important;
 }
 
 .greedy-nav .hidden-links::after {
-  border-bottom-color: #ffffff !important;
+  border-bottom-color: rgba(255, 255, 255, 0.85) !important;
 }
 
 [data-theme="dark"] .greedy-nav .hidden-links::before,
 html[data-theme="dark"] .greedy-nav .hidden-links::before {
-  border-bottom-color: #1e293b !important;
+  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 [data-theme="dark"] .greedy-nav .hidden-links::after,
 html[data-theme="dark"] .greedy-nav .hidden-links::after {
-  border-bottom-color: #111827 !important;
+  border-bottom-color: rgba(15, 23, 42, 0.85) !important;
 }
 
 /* --- Sidebar & Author Profile --- */
