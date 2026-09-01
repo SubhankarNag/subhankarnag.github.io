@@ -3,10 +3,13 @@
    Light / Dark Mode Support & Responsive Layout
    ================================================================ */
 
-/* --- CSS Variables: Light Mode --- */
+/* --- CSS Variables: Light Mode (Default) --- */
 :root,
+html,
 html[data-theme="light"],
-body[data-theme="light"] {
+html.theme-light,
+body[data-theme="light"],
+body.theme-light {
   --bg:              #ffffff;
   --bg-subtle:       #f8fafc;
   --bg-alt:          #f1f5f9;
@@ -42,7 +45,9 @@ body[data-theme="light"] {
 /* --- CSS Variables: Dark Mode --- */
 [data-theme="dark"],
 html[data-theme="dark"],
-body[data-theme="dark"] {
+html.theme-dark,
+body[data-theme="dark"],
+body.theme-dark {
   --bg:              #0b0f19;
   --bg-subtle:       #111827;
   --bg-alt:          #1f2937;
@@ -75,7 +80,7 @@ body[data-theme="dark"] {
   --selection-bg:    rgba(56, 189, 248, 0.3);
 }
 
-/* --- Global Background Overrides across all containers --- */
+/* --- Global Background Overrides --- */
 html,
 body,
 #main,
@@ -94,21 +99,73 @@ article,
   color: var(--text) !important;
 }
 
-[data-theme="dark"],
-[data-theme="dark"] body,
-[data-theme="dark"] #main,
-[data-theme="dark"] .page,
-[data-theme="dark"] .page__inner-wrap,
-[data-theme="dark"] .page__content,
-[data-theme="dark"] .initial-content,
-[data-theme="dark"] .layout--single,
-[data-theme="dark"] .sidebar,
-[data-theme="dark"] .masthead,
-[data-theme="dark"] article,
-[data-theme="dark"] .archive {
+/* Hard Dark Mode Background Overrides */
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] #main,
+html[data-theme="dark"] .page,
+html[data-theme="dark"] .page__inner-wrap,
+html[data-theme="dark"] .page__content,
+html[data-theme="dark"] .initial-content,
+html[data-theme="dark"] .layout--single,
+html[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .masthead,
+html[data-theme="dark"] .masthead__inner-wrap,
+html[data-theme="dark"] .masthead__menu,
+html[data-theme="dark"] nav.greedy-nav,
+html[data-theme="dark"] article,
+html[data-theme="dark"] .archive,
+html[data-theme="dark"] .page__footer {
   background-color: #0b0f19 !important;
   background: #0b0f19 !important;
   color: #cbd5e1 !important;
+}
+
+/* Hard Light Mode Background Overrides */
+html[data-theme="light"],
+html:not([data-theme="dark"]),
+html[data-theme="light"] body,
+html:not([data-theme="dark"]) body,
+html[data-theme="light"] #main,
+html:not([data-theme="dark"]) #main,
+html[data-theme="light"] .page,
+html:not([data-theme="dark"]) .page,
+html[data-theme="light"] .page__inner-wrap,
+html:not([data-theme="dark"]) .page__inner-wrap,
+html[data-theme="light"] .page__content,
+html:not([data-theme="dark"]) .page__content,
+html[data-theme="light"] .initial-content,
+html:not([data-theme="dark"]) .initial-content,
+html[data-theme="light"] .layout--single,
+html:not([data-theme="dark"]) .layout--single,
+html[data-theme="light"] .sidebar,
+html:not([data-theme="dark"]) .sidebar,
+html[data-theme="light"] .masthead,
+html:not([data-theme="dark"]) .masthead,
+html[data-theme="light"] .masthead__inner-wrap,
+html:not([data-theme="dark"]) .masthead__inner-wrap,
+html[data-theme="light"] nav.greedy-nav,
+html:not([data-theme="dark"]) nav.greedy-nav,
+html[data-theme="light"] article,
+html:not([data-theme="dark"]) article,
+html[data-theme="light"] .archive,
+html:not([data-theme="dark"]) .archive {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  color: #334155 !important;
+}
+
+/* Disable Minimal Mistakes Dim Overlays */
+.greedy-nav::before,
+.greedy-nav.close::before,
+.greedy-nav button.close::before,
+button.close::before,
+body.nav-open::before {
+  display: none !important;
+  content: none !important;
+  background: transparent !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* --- Smooth Transitions for Theme Switching --- */
@@ -204,11 +261,6 @@ nav.greedy-nav {
   width: 100% !important;
   min-width: 0 !important;
   position: relative !important;
-}
-
-.greedy-nav::before,
-.greedy-nav.close::before {
-  display: none !important;
 }
 
 .greedy-nav .site-title {
@@ -346,7 +398,8 @@ nav.greedy-nav {
   z-index: 100 !important;
 }
 
-[data-theme="dark"] .greedy-nav .hidden-links {
+[data-theme="dark"] .greedy-nav .hidden-links,
+html[data-theme="dark"] .greedy-nav .hidden-links {
   background: #111827 !important;
   background-color: #111827 !important;
   border: 1px solid #1e293b !important;
@@ -385,12 +438,17 @@ nav.greedy-nav {
   color: var(--accent-link) !important;
 }
 
-[data-theme="dark"] .greedy-nav .hidden-links a {
+[data-theme="dark"] .greedy-nav .hidden-links a,
+html[data-theme="dark"] .greedy-nav .hidden-links a {
   color: #f8fafc !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 [data-theme="dark"] .greedy-nav .hidden-links a:hover,
-[data-theme="dark"] .greedy-nav .hidden-links a:focus {
+[data-theme="dark"] .greedy-nav .hidden-links a:focus,
+html[data-theme="dark"] .greedy-nav .hidden-links a:hover,
+html[data-theme="dark"] .greedy-nav .hidden-links a:focus {
   background: #1f2937 !important;
   background-color: #1f2937 !important;
   color: #38bdf8 !important;
@@ -404,11 +462,13 @@ nav.greedy-nav {
   border-bottom-color: #ffffff !important;
 }
 
-[data-theme="dark"] .greedy-nav .hidden-links::before {
+[data-theme="dark"] .greedy-nav .hidden-links::before,
+html[data-theme="dark"] .greedy-nav .hidden-links::before {
   border-bottom-color: #1e293b !important;
 }
 
-[data-theme="dark"] .greedy-nav .hidden-links::after {
+[data-theme="dark"] .greedy-nav .hidden-links::after,
+html[data-theme="dark"] .greedy-nav .hidden-links::after {
   border-bottom-color: #111827 !important;
 }
 
@@ -591,23 +651,28 @@ nav.greedy-nav {
 }
 
 /* Dark mode adjustments for sidebar icons */
-[data-theme="dark"] .author__urls .fa-envelope {
+[data-theme="dark"] .author__urls .fa-envelope,
+html[data-theme="dark"] .author__urls .fa-envelope {
   color: #fca5a5 !important; 
 }
 
-[data-theme="dark"] .author__urls .fa-globe {
+[data-theme="dark"] .author__urls .fa-globe,
+html[data-theme="dark"] .author__urls .fa-globe {
   color: #7dd3fc !important;
 }
 
-[data-theme="dark"] .author__urls .fa-file-pdf {
+[data-theme="dark"] .author__urls .fa-file-pdf,
+html[data-theme="dark"] .author__urls .fa-file-pdf {
   color: #f87171 !important;
 }
 
-[data-theme="dark"] .author__urls .fa-linkedin {
+[data-theme="dark"] .author__urls .fa-linkedin,
+html[data-theme="dark"] .author__urls .fa-linkedin {
   color: #60a5fa !important;
 }
 
-[data-theme="dark"] .author__urls .ai-google-scholar {
+[data-theme="dark"] .author__urls .ai-google-scholar,
+html[data-theme="dark"] .author__urls .ai-google-scholar {
   color: #8ab4f8 !important;
 }
 
@@ -799,7 +864,8 @@ button:focus-visible {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-[data-theme="dark"] #back-to-top {
+[data-theme="dark"] #back-to-top,
+html[data-theme="dark"] #back-to-top {
   background: #111827;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
@@ -830,8 +896,9 @@ button:focus-visible {
   transition: background 0.35s ease, box-shadow 0.2s ease;
 }
 
-[data-theme="dark"] #dm-toggle .dm-track {
-  background: var(--toggle-track-on);
+[data-theme="dark"] #dm-toggle .dm-track,
+html[data-theme="dark"] #dm-toggle .dm-track {
+  background: var(--toggle-track-on) !important;
 }
 
 #dm-toggle .dm-knob {
@@ -850,8 +917,9 @@ button:focus-visible {
   overflow: hidden;
 }
 
-[data-theme="dark"] #dm-toggle .dm-knob {
-  transform: translateX(20px);
+[data-theme="dark"] #dm-toggle .dm-knob,
+html[data-theme="dark"] #dm-toggle .dm-knob {
+  transform: translateX(20px) !important;
 }
 
 #dm-toggle .dm-icon-sun {
@@ -874,14 +942,16 @@ button:focus-visible {
   line-height: 1;
 }
 
-[data-theme="dark"] #dm-toggle .dm-icon-sun {
-  opacity: 0;
-  transform: rotate(90deg) scale(0.5);
+[data-theme="dark"] #dm-toggle .dm-icon-sun,
+html[data-theme="dark"] #dm-toggle .dm-icon-sun {
+  opacity: 0 !important;
+  transform: rotate(90deg) scale(0.5) !important;
 }
 
-[data-theme="dark"] #dm-toggle .dm-icon-moon {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
+[data-theme="dark"] #dm-toggle .dm-icon-moon,
+html[data-theme="dark"] #dm-toggle .dm-icon-moon {
+  opacity: 1 !important;
+  transform: rotate(0deg) scale(1) !important;
 }
 
 #dm-toggle:hover .dm-track {

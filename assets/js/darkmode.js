@@ -1,15 +1,11 @@
 (function () {
   "use strict";
 
-  /* ============================================================
-   * DEFAULT THEME CONFIGURATION
-   * Change DEFAULT_THEME to "light" or "dark" to set initial mode.
-   * ============================================================ */
-  var DEFAULT_THEME = "light"; // "light" | "dark"
-
   var STORAGE_KEY = "dm-theme";
   var saved = localStorage.getItem(STORAGE_KEY);
-  var isDark = saved ? (saved === "dark") : (DEFAULT_THEME === "dark");
+  
+  // Default is Light Mode ("light")
+  var isDark = saved ? (saved === "dark") : false;
 
   function updateThemeColorMeta(dark) {
     var meta = document.getElementById("meta-theme-color");
@@ -19,14 +15,20 @@
   }
 
   function applyTheme(dark) {
-    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    var theme = dark ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.remove("theme-dark", "theme-light");
+    document.documentElement.classList.add("theme-" + theme);
+
     if (document.body) {
-      document.body.setAttribute("data-theme", dark ? "dark" : "light");
+      document.body.setAttribute("data-theme", theme);
+      document.body.classList.remove("theme-dark", "theme-light");
+      document.body.classList.add("theme-" + theme);
     }
     updateThemeColorMeta(dark);
   }
 
-  // Set theme before initial render to prevent flash
+  // Set theme immediately before paint to prevent flash
   applyTheme(isDark);
 
   function buildButton() {
